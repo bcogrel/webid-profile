@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en" prefix="{% for prefix in ns.ns_dict %}{{ prefix }}: {{ns[prefix] }} {% endfor %}">
+  <head about="">{% block head %}
+    <meta charset='utf-8'/>
+    <title property="dcterms:title">{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='application.css') }}">
+    {% endblock %}</head>
+  <body id="body" about="" {% if types is defined %} typeof="{% for type in types %}{{graph.qname(type)}} {% endfor %}"{% endif %}>
+    <div class="container">
+        {% block content %}{% endblock %} 
+    </div>
+  </body>
+</html>

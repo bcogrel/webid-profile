@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% set user_uri = graph.value(current_uri, ns.foaf['primaryTopic']) %}
+{% block title %}{{ graph.value(current_uri, ns.dcterms['title']) }}{% endblock %}
+{% block head %}{{ super() }}
+   <link rel="foaf:primaryTopic" href="{{ user_uri }}" />
+   <link rel="dcterms:author" href="{{ user_uri }}" />
+{% endblock %}
+{% block content %}
+  <div about="{{ user_uri }}" typeof="foaf:Person">
+      <h1 property="foaf:name">{{ graph.value(user_uri, ns.foaf['name']) }}</h1>
+
+      <div id="webids">
+          <ul>
+              {% for key_uri  in graph.objects(user_uri, ns.cert['key']) %}
+              <li about="{{ key_uri }}" src="{{ user_uri }}" rev="cert:key" typeof="cert:RSAPublicKey">
+                {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}
+                {% if not key_label is none %}<div class="label" property="rdfs:label">{{ graph.value(key_uri, ns.rdfs['label']) }}</div> {% endif %}
+                <div class="modulus">
+                    Modulus: <span property="cert:modulus">{{
+                    graph.value(key_uri, ns.cert['modulus']) }}</span>
+                </div>
+                <div class="exponent">
+                    Exponent: <span property="cert:exponent">{{
+                        graph.value(key_uri, ns.cert['exponent']) }}</span>
+                </div>
+              </li>
+              {% endfor %}
+
+          </ul>
+      </div>
+
+  </div>
+{% endblock %}
