@@ -12,7 +12,7 @@ def before_request():
         app.graph = Graph()
         app.graph.namespace_manager = ns.rdflib_ns_manager
         with app.open_resource('db/profile.ttl') as f:
-            app.graph.parse(f, format="turtle")
+            app.graph.parse(f, format="turtle", publicID=uri_for('profile'))
     g.graph = app.graph
 
 

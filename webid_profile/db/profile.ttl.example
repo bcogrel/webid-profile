@@ -5,17 +5,23 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix cert:  <http://www.w3.org/ns/auth/cert#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://localhost:5000/profile> a foaf:PersonalProfileDocument;
-    dc:author <http://localhost:5000/profile#me>;
+<> a foaf:PersonalProfileDocument;
+    dc:author <#me>;
     dc:created "2013-12-04"^^xsd:date;
     dc:title "Machin profile"@en;
-    foaf:primaryTopic <http://localhost:5000/profile#me> .
+    foaf:primaryTopic <#me> .
 
-<http://localhost:5000/profile#me> a foaf:Person;
+<#me> a foaf:Person;
     foaf:mbox_sha1sum "email_hash_to_replace";
     foaf:name "Firstname Lastname";
-    wot:hasKey <http://localhost:5000/profile#key1>;
+    foaf:firstName "Firstname";
+    foaf:lastName "Lastname";
+    skos:prefLabel "Firstname Lastname";
+    bio:olb "A short one-line biography about me"@en;
+    foaf:img </static/picture.jpg>;
+    wot:hasKey <#key1>;
 cert:key [ 
     a cert:RSAPublicKey;
     cert:exponent 65537;
@@ -31,7 +37,7 @@ cert:key [
     "B0EEEEEEDD8232032827B3BC42B434B35ECDF45E786D6DB1462604F2F8D800B4D61B56C494CF02667DCCDB2A227F259B3B5D99B50553D50A13328B7A34A46F0D1D68713DDFEF6EE02DA87DB6EE794781CDDCB61946943359B23C1CE15A7EB10F4DEDF1E00ED2EE62986C42BD1BA6BC9174D2869AC78801B7C2B1DC8A1F73AC99F94AA0AE5BBCB7494DC3FF15AF01FDC92B98574854518BBC58601C56FC62771F843ACDD495E602875729AD0813485620EDE2D83050E3607D9A92B47C67C8ADF341B5AB0B9926388C33DD3C60117B8AEBEA46F655F049E871ACFBAC57AEC61F6A66B250AE8E9E05ABA2B3A8379012122A5B6E5310D238OEAFD8DEE"^^xsd:hexBinary; ].
 
 
-<http://localhost:5000/profile#key1> wot:pubkeyAddress <https://example.org/static/key1.pubkey.asc> ;
+<#key1> wot:pubkeyAddress <https://example.org/static/key1.pubkey.asc> ;
 	wot:hex_id "003210D4"^^xsd:hexBinary ;
 	wot:fingerprint "BADB079CF3CAAAFC26C5E54D0E38C00EDDD4"^^xsd:hexBinary ;
 	a wot:PubKey .

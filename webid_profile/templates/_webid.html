@@ -1,0 +1,24 @@
+      <div id="webid" class="block">
+
+          <div id="webid-uri-block">Web ID: <a id="webid-uri" href="{{ user_uri }}">{{ user_uri }}</a></div>
+
+          <div class="webid-tls-keys">
+              <h4>WebID-TLS public keys</h4>
+              <ul>
+              {% for key_uri in graph.objects(user_uri, ns.cert['key']) %}
+                  <li class="webid-tls-key" about="{{ key_uri }}" src="{{ user_uri }}" rev="cert:key" typeof="cert:RSAPublicKey">
+                        {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}
+                        {% if not key_label is none %}<div class="label" property="rdfs:label">{{ graph.value(key_uri, ns.rdfs['label']) }}</div> {% endif %}
+                        <div class="modulus">
+                            Modulus: <span property="cert:modulus" datatype="xsd:hexBinary">{{
+                            graph.value(key_uri, ns.cert['modulus']) }}</span>
+                        </div>
+                        <div class="exponent">
+                            Exponent: <span property="cert:exponent" datatype="xsd:integer">{{
+                                graph.value(key_uri, ns.cert['exponent']) }}</span>
+                        </div>
+                  </li>
+              {% endfor %}
+              </ul>
+          </div>
+       </div>

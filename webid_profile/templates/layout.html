@@ -3,7 +3,8 @@
   <head about="">{% block head %}
     <meta charset='utf-8'/>
     <title property="dcterms:title">{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='application.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/application.css') }}">
     {% endblock %}</head>
   <body id="body" about="" {% if types is defined %} typeof="{% for type in types %}{{graph.qname(type)}} {% endfor %}"{% endif %}>
     <div class="container">

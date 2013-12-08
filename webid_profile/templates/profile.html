@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% set user_uri = graph.value(current_uri, ns.foaf['primaryTopic']) %}
+{% set mini_bio = graph.value(user_uri, ns.bio['olb']) %}
+{% set picture_uri = graph.value(user_uri, ns.foaf['img']) %}
 {% block title %}{{ graph.value(current_uri, ns.dcterms['title']) }}{% endblock %}
 {% block head %}{{ super() }}
    <link rel="foaf:primaryTopic" href="{{ user_uri }}" />
@@ -7,27 +9,24 @@
 {% endblock %}
 {% block content %}
   <div about="{{ user_uri }}" typeof="foaf:Person">
-      <h1 property="foaf:name">{{ graph.value(user_uri, ns.foaf['name']) }}</h1>
+      <h1 id="person-name" property="foaf:name">{{ graph.value(user_uri, ns.foaf['name']) }}</h1>
+      {# TODO: make these data visible on click request #}
+      <span class="hidden-data" property="foaf:firstName">{{ graph.value(user_uri, ns.foaf['firstName']) }}</span>
+      <span class="hidden-data" property="foaf:lastName">{{ graph.value(user_uri, ns.foaf['lastName']) }}</span>
+      <span class="hidden-data" property="skos:prefLabel">{{ graph.value(user_uri, ns.foaf['prefLabel']) }}</span>
 
-      <div id="webids">
-          <ul>
-              {% for key_uri  in graph.objects(user_uri, ns.cert['key']) %}
-              <li about="{{ key_uri }}" src="{{ user_uri }}" rev="cert:key" typeof="cert:RSAPublicKey">
-                {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}
-                {% if not key_label is none %}<div class="label" property="rdfs:label">{{ graph.value(key_uri, ns.rdfs['label']) }}</div> {% endif %}
-                <div class="modulus">
-                    Modulus: <span property="cert:modulus">{{
-                    graph.value(key_uri, ns.cert['modulus']) }}</span>
-                </div>
-                <div class="exponent">
-                    Exponent: <span property="cert:exponent">{{
-                        graph.value(key_uri, ns.cert['exponent']) }}</span>
-                </div>
-              </li>
-              {% endfor %}
+      {% if not mini_bio is none %}<div id="mini-bio" class="block">
+          Mini bio: <span property="bio:olb">{{ mini_bio }}</span>
+      </div>{% endif %}
 
-          </ul>
-      </div>
+      {% if not picture_uri is none %}<div>
+            <img alt="Photo" id="photo" src="{{ picture_uri }}"/>
+      </div>{% endif %}
+
+      {% include "_webid.html" %}
+      {% include "_gpg.html" %}
+
+
 
   </div>
 {% endblock %}

@@ -1,0 +1,77 @@
+/* the overlayed element */
+
+@font-face {
+	font-family: "WaitingfortheSunrise";
+	src: url('../WaitingfortheSunrise.ttf');
+}
+
+/*Body*/
+body {
+	background: #306074;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: white;
+}
+a {
+	color: #E6ED86;
+}
+.container {
+	width: 800px;
+	margin: 0 auto;
+}
+.block {
+	/*	background-color: white;*/
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	padding: 30px;
+}
+.block h2{
+	text-align: center;
+}
+
+#person-name {
+	font-family: "WaitingfortheSunrise";
+	font-size: 80px;
+	margin: 0;
+}
+
+p {
+	text-align: justify;
+}
+
+.hidden-data {
+    display: none;
+}
+
+.webid-tls-key{
+    width: 20%;
+    list-style-type: none;
+	display: inline-block;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    margin-right: 60px;
+}
+.webid-tls-key:hover{
+    text-overflow:inherit;
+    overflow:visible;
+}
+
+#photo {
+	width: 175px;
+	height: 175px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+    float: right;
+    margin-right: 40px;
+}
+
+
+
+footer {
+    margin: 0 auto;
+    margin-top: 75px;
+    text-align: center;
+}
