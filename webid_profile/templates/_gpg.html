@@ -1,20 +1,21 @@
 {% set gpg_key_uris = graph.objects(user_uri, ns.wot['hasKey']) %}
 {% if gpg_key_uris %}
-<div id="gpg" class="block">
-    <ul>{% for key_uri in gpg_key_uris %}
-      <li class="gpg-key" about="{{ key_uri }}" src="{{ user_uri }}" rev="wot:hasKey" typeof="wot:PubKey">
+<div id="gpg" class="col-md-6">
+    <div>{% for key_uri in gpg_key_uris %}
+      <div class="gpg-key" about="{{ key_uri }}" src="{{ user_uri }}" rev="wot:hasKey" typeof="wot:PubKey">
             {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}
             {% if not key_label is none %}<h5 class="label" property="rdfs:label">{{ graph.value(key_uri, ns.rdfs['label']) }}</h5> {% endif %}
-            <div class="gpg_key_id">
-                Key ID: <span property="wot:hex_id" datatype="xsd:hexBinary">{{ graph.value(key_uri, ns.wot['hex_id']) }}</span>
-            </div>
-            <div class="pubkeyAddress">
-                <a rel="wot:pubkeyAddress" href="{{ graph.value(key_uri, ns.wot['pubkeyAddress'])}}">Public key</a>
-            </div>
-            <div class="fingerprint">
-                Fingerprint: <span property="wot:fingerprint" datatype="xsd:hexBinary">{{
-                    graph.value(key_uri, ns.wot['fingerprint']) }}</span>
-            </div>
-      </li>
-   {% endfor %}</ul>
+            <dl class="dl-horizontal">
+                <dt>GPG Key ID</dt>
+                <dd class="gpg_key_id" property="wot:hex_id" datatype="xsd:hexBinary">{{ graph.value(key_uri, ns.wot['hex_id']) }}</dd>
+                <dt>Fingerprint</dt>
+                <dd class="fingerprint" property="wot:fingerprint" datatype="xsd:hexBinary">{{
+                        graph.value(key_uri, ns.wot['fingerprint']) }}</dd>
+                <dt>Key file</dt>
+                 <dd class="pubkeyAddress">
+                    <a rel="wot:pubkeyAddress" href="{{ graph.value(key_uri, ns.wot['pubkeyAddress'])}}">Public key</a>
+                </dd>
+            </dl>
+      </div>
+   {% endfor %}</div>
 </div>{% endif %}

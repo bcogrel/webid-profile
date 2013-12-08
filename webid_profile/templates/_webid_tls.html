@@ -1,10 +1,8 @@
-      <div id="webid" class="block">
 
-          <div id="webid-uri-block">Web ID: <a id="webid-uri" href="{{ user_uri }}">{{ user_uri }}</a></div>
 
-          <div class="webid-tls-keys">
-              <h4>WebID-TLS public keys</h4>
-              <ul>
+          <div>
+              <h4>WebID-TLS<small><a href="#" id="show-webid-tls-keys" class="btn btn-link">(see public keys)</a></small></h4>
+              <ul id="webid-tls-keys">
               {% for key_uri in graph.objects(user_uri, ns.cert['key']) %}
                   <li class="webid-tls-key" about="{{ key_uri }}" src="{{ user_uri }}" rev="cert:key" typeof="cert:RSAPublicKey">
                         {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}
@@ -21,4 +19,3 @@
               {% endfor %}
               </ul>
           </div>
-       </div>

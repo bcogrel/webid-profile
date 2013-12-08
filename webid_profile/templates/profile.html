@@ -6,27 +6,51 @@
 {% block head %}{{ super() }}
    <link rel="foaf:primaryTopic" href="{{ user_uri }}" />
    <link rel="dcterms:author" href="{{ user_uri }}" />
+   <meta property="dcterms:created" datatype="xsd:date" content="{{
+                graph.value(current_uri, ns.dcterms['created']) }}" />
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+     <script>
+    // prepare the form when the DOM is ready
+    $(document).ready(function() {
+        $( '#show-hashed-emails' ).click(function() {
+            $( '#mail-hashes' ).toggle();
+        });
+
+        $( '#show-webid-tls-keys' ).click(function() {
+            $( '#webid-tls-keys' ).toggle();
+        });
+    });
+  </script>
 {% endblock %}
 {% block content %}
   <div about="{{ user_uri }}" typeof="foaf:Person">
       <h1 id="person-name" property="foaf:name">{{ graph.value(user_uri, ns.foaf['name']) }}</h1>
-      {# TODO: make these data visible on click request #}
-      <span class="hidden-data" property="foaf:firstName">{{ graph.value(user_uri, ns.foaf['firstName']) }}</span>
-      <span class="hidden-data" property="foaf:lastName">{{ graph.value(user_uri, ns.foaf['lastName']) }}</span>
-      <span class="hidden-data" property="skos:prefLabel">{{ graph.value(user_uri, ns.foaf['prefLabel']) }}</span>
 
-      {% if not mini_bio is none %}<div id="mini-bio" class="block">
-          Mini bio: <span property="bio:olb">{{ mini_bio }}</span>
-      </div>{% endif %}
+      <div class="row" id="intro">
+          <div id="mini-bio" class="col-md-6 col-md-offset-1">
+          {% if not mini_bio is none %}<p property="bio:olb">{{ mini_bio }}</p>
+          {% endif %}</div>
 
-      {% if not picture_uri is none %}<div>
-            <img alt="Photo" id="photo" src="{{ picture_uri }}"/>
-      </div>{% endif %}
+          {% if not picture_uri is none %}<div class="col-md-3 col-md-offset-1">
+                <img alt="Photo" id="photo" src="{{ picture_uri }}"/>
+          </div>{% endif %}
+       </div>
 
-      {% include "_webid.html" %}
-      {% include "_gpg.html" %}
+      <div class="row" class="info-block">
+          {% include "_common_info.html" %}
+          {% include "_gpg.html" %}
+      </div>
+
+      {% include "_mail_hashes.html" %}
+      {% include "_webid_tls.html" %}
 
 
+
+
+   {# TODO: make these data visible on click request #}
+   <span class="hidden-data" property="foaf:firstName">{{ graph.value(user_uri, ns.foaf['firstName']) }}</span>
+   <span class="hidden-data" property="foaf:lastName">{{ graph.value(user_uri, ns.foaf['lastName']) }}</span>
+   <span class="hidden-data" property="skos:prefLabel">{{ graph.value(user_uri, ns.foaf['prefLabel']) }}</span>
 
   </div>
 {% endblock %}

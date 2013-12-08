@@ -1,0 +1,9 @@
+{% set openid = graph.value(user_uri, ns.foaf['openid']) %}
+<div id="common-info" class="col-md-6">
+    <dl class="dl-horizontal">
+    <dt class="webid-entry">WebID</dt>
+    <dd><a class="webid-entry" href="{{ user_uri }}">{{ user_uri }}</a></dd>
+    {%if openid %}<dt>OpenID</dt>
+    <dd><a property="foaf:openid" href="{{ openid }}">{{ openid }}</a></dd>{% endif %}
+    </dl>
+</div>

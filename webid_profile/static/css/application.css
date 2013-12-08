@@ -15,31 +15,41 @@ body {
 a {
 	color: #E6ED86;
 }
+a:hover {
+    color: #FF9900;
+}
+
 .container {
 	width: 800px;
-	margin: 0 auto;
 }
-.block {
-	/*	background-color: white;*/
-	background-color: rgba(255, 255, 255, 0.1);
-	border-radius: 15px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
-	padding: 30px;
-}
-.block h2{
-	text-align: center;
-}
+
 
 #person-name {
 	font-family: "WaitingfortheSunrise";
 	font-size: 80px;
 	margin: 0;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	text-align: center;
 }
 
 p {
 	text-align: justify;
 }
+
+
+#mini-bio {
+    margin-top: 40px;
+    font-size: 16px;
+    font-style: oblique;
+}
+
+.webid-entry{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+
 
 .hidden-data {
     display: none;
@@ -54,9 +64,31 @@ p {
     margin-right: 60px;
 }
 .webid-tls-key:hover{
-    text-overflow:inherit;
-    overflow:visible;
+    text-overflow: inherit;
+    overflow: visible;
 }
+
+.fingerprint{
+	overflow:hidden;
+    text-overflow:ellipsis;
+}
+.fingerprint:hover{
+    text-overflow: inherit;
+    overflow: visible;
+}
+
+#mail-hashes{
+    display: none;
+}
+
+#webid-tls-keys{
+    display: none;
+}
+
+.info-block{
+    margin-bottom: 50px;
+}
+
 
 #photo {
 	width: 175px;
@@ -65,7 +97,7 @@ p {
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
     float: right;
-    margin-right: 40px;
+    margin-bottom: 20px;
 }
 
 
