@@ -43,7 +43,7 @@ h5 {
 
 
 #mini-bio {
-    margin-top: 40px;
+    margin-top: 60px;
     font-size: 16px;
     font-style: oblique;
 }
@@ -108,3 +108,15 @@ h5 {
     margin-top: 75px;
     text-align: center;
 } */
+
+
+.dl-horizontal dt{
+    /*text-align: left; */
+    /* margin-bottom: 1em; */
+    width: auto;
+    padding-right: 1em;
+}
+
+.dl-horizontal dd{
+   margin-left: 0;
+}

@@ -1,6 +1,6 @@
 {% set gpg_key_uris = graph.objects(user_uri, ns.wot['hasKey']) %}
 {% if gpg_key_uris %}
-<div id="gpg" class="col-md-6">
+<div id="gpg" class="col-md-5">
     <div>{% for key_uri in gpg_key_uris %}
       <div class="gpg-key" about="{{ key_uri }}" src="{{ user_uri }}" rev="wot:hasKey" typeof="wot:PubKey">
             {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}

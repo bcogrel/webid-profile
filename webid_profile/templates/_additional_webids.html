@@ -1,0 +1,7 @@
+{% set other_webids = graph.objects(user_uri, ns.owl['sameAs']) %}
+{% if other_webids %}<div>
+<h4>Additional WebIDs</h4>
+<ul>{% for webid in other_webids %}
+    <li><a property="owl:sameAs" href="{{ webid }}">{{ webid }}</a></li>
+{%endfor %}</ul>
+</div>{%endif %}
