@@ -14,7 +14,7 @@
     foaf:primaryTopic <#me> .
 
 <#me> a foaf:Person;
-    foaf:mbox_sha1sum "email_hash_to_replace";
+    foaf:mbox_sha1sum "deadbeaf"^^xsd:hexBinary;
     foaf:name "Firstname Lastname";
     foaf:firstName "Firstname";
     foaf:lastName "Lastname";

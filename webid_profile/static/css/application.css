@@ -37,6 +37,10 @@ p {
 	text-align: justify;
 }
 
+h5 {
+    font-size: 12px !important;
+}
+
 
 #mini-bio {
     margin-top: 40px;
@@ -55,15 +59,12 @@ p {
     display: none;
 }
 
-.webid-tls-key{
-    width: 20%;
-    list-style-type: none;
-	display: inline-block;
+.modulus{
 	overflow:hidden;
     text-overflow:ellipsis;
-    margin-right: 60px;
 }
-.webid-tls-key:hover{
+
+.modulus:hover{
     text-overflow: inherit;
     overflow: visible;
 }
@@ -102,8 +103,8 @@ p {
 
 
 
-footer {
+/*footer {
     margin: 0 auto;
     margin-top: 75px;
     text-align: center;
-}
+} */

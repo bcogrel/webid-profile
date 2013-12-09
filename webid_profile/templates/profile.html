@@ -50,7 +50,7 @@
    {# TODO: make these data visible on click request #}
    <span class="hidden-data" property="foaf:firstName">{{ graph.value(user_uri, ns.foaf['firstName']) }}</span>
    <span class="hidden-data" property="foaf:lastName">{{ graph.value(user_uri, ns.foaf['lastName']) }}</span>
-   <span class="hidden-data" property="skos:prefLabel">{{ graph.value(user_uri, ns.foaf['prefLabel']) }}</span>
+   <span class="hidden-data" property="skos:prefLabel">{{ graph.value(user_uri, ns.skos['prefLabel']) }}</span>
 
   </div>
 {% endblock %}
