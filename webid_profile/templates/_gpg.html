@@ -2,7 +2,8 @@
 {% if gpg_key_uris %}
 <div id="gpg" class="col-md-5">
     <div>{% for key_uri in gpg_key_uris %}
-      <div class="gpg-key" about="{{ key_uri }}" src="{{ user_uri }}" rev="wot:hasKey" typeof="wot:PubKey">
+        <span class="hidden-data" rel="wot:hasKey" resource="{{ key_uri }}"></span>
+	<div class="gpg-key" about="{{ key_uri }}" typeof="wot:PubKey">
             {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}
             {% if not key_label is none %}<h5 class="label" property="rdfs:label">{{ graph.value(key_uri, ns.rdfs['label']) }}</h5> {% endif %}
             <dl class="dl-horizontal">

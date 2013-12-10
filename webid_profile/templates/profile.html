@@ -8,7 +8,7 @@
    <link rel="dcterms:author" href="{{ user_uri }}" />
    <meta property="dcterms:created" datatype="xsd:date" content="{{
                 graph.value(current_uri, ns.dcterms['created']) }}" />
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
      <script>
     // prepare the form when the DOM is ready
     $(document).ready(function() {
@@ -36,7 +36,7 @@
           </div>{% endif %}
        </div>
 
-      <div class="row" class="info-block">
+      <div class="row info-block">
           {% include "_common_info.html" %}
           {% include "_gpg.html" %}
       </div>

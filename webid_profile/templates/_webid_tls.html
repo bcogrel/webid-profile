@@ -3,8 +3,9 @@
           <div>
               <h4>WebID-TLS<small><a href="#" id="show-webid-tls-keys" class="btn btn-link">(see public keys)</a></small></h4>
               <div id="webid-tls-keys">
-              {% for key_uri in graph.objects(user_uri, ns.cert['key']) %}
-                  <div class="webid-tls-key col-md-7" about="{{ key_uri }}" src="{{ user_uri }}" rev="cert:key" typeof="cert:RSAPublicKey">
+	      {% for key_uri in graph.objects(user_uri, ns.cert['key']) %}
+	      <span class="hidden-data" rel="cert:key" resource="{{ key_uri }}"></span>
+	      <div class="webid-tls-key col-md-7" about="{{ key_uri }}" typeof="cert:RSAPublicKey">
                         {% set key_label = graph.value(key_uri, ns.rdfs['label']) %}
                         {% if not key_label is none %}<h5 class="label" property="rdfs:label">{{
                                         graph.value(key_uri, ns.rdfs['label']) }}</h5> {% endif %}
