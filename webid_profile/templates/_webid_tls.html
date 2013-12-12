@@ -1,7 +1,7 @@
 
 
           <div>
-              <h4>WebID-TLS<small><a href="#" id="show-webid-tls-keys" class="btn btn-link">(see public keys)</a></small></h4>
+              <h4>WebID-TLS<small><a href="#webid-tls-keys" id="show-webid-tls-keys" class="btn btn-link">(see public keys)</a></small></h4>
               <div id="webid-tls-keys">
 	      {% for key_uri in graph.objects(user_uri, ns.cert['key']) %}
 	      <span class="hidden-data" rel="cert:key" resource="{{ key_uri }}"></span>

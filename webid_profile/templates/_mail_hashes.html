@@ -1,6 +1,6 @@
 {% set mail_hashes = graph.objects(user_uri, ns.foaf['mbox_sha1sum']) %}
 {% if mail_hashes %}<div>
-    <h4>Email addresses <small><a href="#" id="show-hashed-emails" class="btn btn-link">(see hashed values)</a></small></h4>
+    <h4>Email addresses <small><a href="#mail-hashes" id="show-hashed-emails" class="btn btn-link">(see hashed values)</a></small></h4>
     <ul id="mail-hashes"> {% for mail_hash in mail_hashes %}
         <li><span property="foaf:mbox_sha1sum" datatype="xsd:hexBinary">{{ mail_hash }}</span> (SHA1)</li>
     {% endfor %}</ul>
