@@ -5,6 +5,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix cert:  <http://www.w3.org/ns/auth/cert#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <> a foaf:PersonalProfileDocument;
@@ -19,11 +20,11 @@
     foaf:firstName "Firstname";
     foaf:lastName "Lastname";
     skos:prefLabel "Firstname Lastname";
-    bio:olb "A short one-line biography about me"@en;
     foaf:img </static/picture.jpg>;
     wot:hasKey <#key1>;
     foaf:openid <http://example.org/openid/toto>;
-cert:key [ 
+    bio:olb "A short one-line biography about me"@en;
+    cert:key [
     a cert:RSAPublicKey;
     cert:exponent 65537;
     rdfs:label "Key 1";
