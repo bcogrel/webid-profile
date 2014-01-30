@@ -1,5 +1,5 @@
-from flask import Flask, g, request, redirect, url_for, render_template
-from flask import Response
+from flask import Flask, g, request, redirect, url_for
+from flask import Response, render_template
 from rdflib import Graph
 from webid_profile import ns
 from webid_profile.core import uri_for
@@ -23,14 +23,15 @@ def root():
 
 @app.route('/profile')
 def profile():
-    #if request.mimetype == "text/html":
+    """ Profile page with content negotiation
+    """
     best = request.accept_mimetypes.best_match(
             ['text/html', 'text/turtle', 'application/rdf+xml'])
     if best == 'text/turtle':
         resp = g.graph.serialize(format="turtle")
     elif best == 'application/rdf+xml':
-        resp =  g.graph.serialize(format="xml")
-    else :
+        resp = g.graph.serialize(format="xml")
+    else:
         resp = render_template('profile.html',
                 current_uri=uri_for('profile'),
                 graph=g.graph, ns=ns)

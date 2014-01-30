@@ -1,4 +1,5 @@
 """
+    Core tools for Rdflib graphs and namespaces
 """
 
 from rdflib import URIRef, Graph
@@ -10,19 +11,6 @@ def uri_for(url, **kwargs):
     """ Tricks that creates an URIRef from the URL """
     kwargs['_external'] = True
     return URIRef(url_for(url, **kwargs))
-
-
-
-class ContentError(Exception):
-    pass
-
-
-class NamedGraphNotFoundError(ContentError):
-    pass
-
-
-class AlreadyExistingResourceError(ContentError):
-    pass
 
 
 class AlreadyRegisteredNSError(Exception):
@@ -58,8 +46,8 @@ class NSManager:
     def rdflib_ns_manager(self):
         """ For using prefixes in RDFlib graphs """
         if self._rdflib_ns_manager is None:
-             self._rdflib_ns_manager = NamespaceManager(Graph())
-             for namesp in self._ns_dict:
+            self._rdflib_ns_manager = NamespaceManager(Graph())
+            for namesp in self._ns_dict:
                 self._rdflib_ns_manager.bind(namesp, self._ns_dict[namesp])
 
         return self._rdflib_ns_manager
