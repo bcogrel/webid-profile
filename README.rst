@@ -10,7 +10,7 @@ You just have write your profile in Turtle in *db/profile.ttl*. For example, see
 
 You can add a picture in the *static/* directory.
 
-For a quick overview, you may visit ``my page``page_.
+For a quick overview, you may visit `my page <https://benjamin.bcgl.fr/profile>`_.
 
 
 Basic features
@@ -43,7 +43,6 @@ Installation
 
 
 .. _WebID: https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html
-.. _page: https://benjamin.bcgl.fr/profile
 .. _foaf: http://xmlns.com/foaf/0.1/
 .. _bio: http://purl.org/vocab/bio/0.1/
 .. _cert: http://www.w3.org/ns/auth/cert#
