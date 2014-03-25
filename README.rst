@@ -50,6 +50,10 @@ Installation
     # Install dependencies
     pip install -r requirements.txt
 
+    # Edit the profile
+    cp webid_profile/db/profile.ttl.example webid_profile/db/profile.ttl
+    vim webid_profile/db/profile.ttl
+
     # Test it
     python webid_profile/app.py
 
