@@ -11,7 +11,7 @@
 <> a foaf:PersonalProfileDocument;
     dc:author <#me>;
     dc:created "2013-12-04"^^xsd:date;
-    dc:title "Machin profile"@en;
+    dc:title "Firstname Lastname profile"@en;
     foaf:primaryTopic <#me> .
 
 <#me> a foaf:Person;
@@ -22,7 +22,7 @@
     skos:prefLabel "Firstname Lastname";
     foaf:img </static/picture.jpg>;
     wot:hasKey <#key1>;
-    foaf:openid <http://example.org/openid/toto>;
+    foaf:openid <http://example.org/openid/johndoe>;
     bio:olb "A short one-line biography about me"@en;
     cert:key [
     a cert:RSAPublicKey;

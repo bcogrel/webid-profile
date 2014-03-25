@@ -38,8 +38,21 @@ MIT
 
 Installation
 ------------
+::
 
-    TODO
+    git clone https://github.com/bcogrel/webid-profile.git
+    cd webid-profile
+
+    # Setup a virtual environment
+    virtualenv2 env
+    source env/bin/activate
+
+    # Install dependencies
+    pip install -r requirements.txt
+
+    # Test it
+    python webid_profile/app.py
+
 
 
 .. _WebID: https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/identity-respec.html
